@@ -113,15 +113,15 @@ if 'Division' in df_cleaned.columns:
     print("   Mapping:", dict(zip(le.classes_, le.transform(le.classes_))))
 print("-----------------------------------------------------------------------------------------------------------------------------------------------------------------")
 # 2. One-Hot Encoding 
-print("--- เริ่มจัดการปัญหา High Cardinality ในคอลัมน์ Division ---")
+print("--- Starting to handle high cardinality in the 'Division' column ---")
 
 top_divisions = df_cleaned['Division'].value_counts().index[:30]
 
 df_cleaned['Division'] = df_cleaned['Division'].apply(lambda x: x if x in top_divisions else 'Other')
 
-print(f"ลดรูป Division เหลือทั้งหมด: {df_cleaned['Division'].nunique()} กลุ่ม (รวม 'Other')")
+print(f"Reduced 'Division' to a total of: {df_cleaned['Division'].nunique()} groups (including 'Other')")
 
 df_final = pd.get_dummies(df_cleaned, columns=['Division'], prefix='Div', dtype=int)
 
-print("--- ทำ One-Hot Encoding สำเร็จแล้ว! ---")
-print(f"ขนาดของ DataFrame ใหม่: {df_final.shape}")
+print("--- One-Hot Encoding completed! ---")
+print(f"New DataFrame shape: {df_final.shape}")
