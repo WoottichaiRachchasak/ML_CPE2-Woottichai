@@ -34,15 +34,15 @@ for file_name in file_name:
 X = np.array(images) / 255.0
 y = np.array(ages)
 
-print(f"อ่านข้อมูลเสร็จเรียบร้อย!")
-print(f"- จำนวนรูปภาพทั้งหมด: {X.shape[0]} ภาพ")
-print(f"- จำนวน Feature เดิมก่อนทำ PCA: {X.shape[1]} พิกเซล\n")
+print(f"read data successfully!!")
+print(f"- total images: {X.shape[0]} ภาพ")
+print(f"- Number of original features before PCA: {X.shape[1]} px\n")
 
-n_components = 20 # ลด Feature จาก 4,096 เหลือ 20 Components[cite: 1]
+n_components = 20 
 pca = PCA(n_components=n_components, random_state=42)
 X_pca = pca.fit_transform(X)
 
-print(f"- จำนวน Feature หลังลดมิติด้วย PCA: {X_pca.shape[1]} Components\n")
+print(f"- Number of features after dimensionality reduction with PCA: {X_pca.shape[1]} Components\n")
 
 
 X_train, X_test, y_train, y_test = train_test_split(
@@ -73,10 +73,10 @@ r2_simple = r2_score(y_test, y_pred_simple)
 r2_multi = r2_score(y_test, y_pred_multi)
 
 print("="*60)
-print("             ผลการเปรียบเทียบประสิทธิภาพ (LAB 1)")
+print("             Performance Comparison Results (LAB 1)")
 print("="*60)
-print(f"1. Simple Linear Regression   (1  PC)  -> RMSE: {rmse_simple:.2f} ปี | R2 Score: {r2_simple:.4f}")
-print(f"2. Multiple Linear Regression (20 PCs) -> RMSE: {rmse_multi:.2f} ปี | R2 Score: {r2_multi:.4f}")
+print(f"1. Simple Linear Regression   (1  PC)  -> RMSE: {rmse_simple:.2f} years | R2 Score: {r2_simple:.4f}")
+print(f"2. Multiple Linear Regression (20 PCs) -> RMSE: {rmse_multi:.2f} years | R2 Score: {r2_multi:.4f}")
 print("="*60)
 
 
@@ -87,8 +87,8 @@ plt.subplot(1, 2, 1)
 plt.scatter(y_test, y_pred_simple, alpha=0.4, color='orange')
 plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'r--', lw=2) 
 plt.title(f'Simple Linear Regression\nRMSE: {rmse_simple:.2f} | R2: {r2_simple:.4f}')
-plt.xlabel('Actual Age (อายุจริง)')
-plt.ylabel('Predicted Age (อายุที่ทำนาย)')
+plt.xlabel('Actual Age ')
+plt.ylabel('Predicted Age')
 plt.grid(True)
 
 # Multiple Linear Regression
@@ -96,8 +96,8 @@ plt.subplot(1, 2, 2)
 plt.scatter(y_test, y_pred_multi, alpha=0.4, color='blue')
 plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], 'r--', lw=2) 
 plt.title(f'Multiple Linear Regression\nRMSE: {rmse_multi:.2f} | R2: {r2_multi:.4f}')
-plt.xlabel('Actual Age (อายุจริง)')
-plt.ylabel('Predicted Age (อายุที่ทำนาย)')
+plt.xlabel('Actual Age')
+plt.ylabel('Predicted Age')
 plt.grid(True)
 
 plt.tight_layout()
