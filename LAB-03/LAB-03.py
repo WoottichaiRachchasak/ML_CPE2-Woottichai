@@ -52,23 +52,23 @@ X_train, X_test, y_train, y_test = train_test_split(
 X_train_simple = X_train[:, :1] 
 X_test_simple = X_test[:, :1]
 
-
+#Create a simple model and train it.
 simple_model = LinearRegression()
 simple_model.fit(X_train_simple, y_train)
-
+#Test simple model
 y_pred_simple = simple_model.predict(X_test_simple)
 
-
+#Create a multiple model and train it.
 multi_model = LinearRegression()
 multi_model.fit(X_train, y_train)
-
+#Test multiple model
 y_pred_multi = multi_model.predict(X_test)
 
-
+# Find Determine the error
 rmse_simple = np.sqrt(mean_squared_error(y_test, y_pred_simple))
 rmse_multi = np.sqrt(mean_squared_error(y_test, y_pred_multi))
 
-
+#Comparing the performance of our model against random guessing (the mean)
 r2_simple = r2_score(y_test, y_pred_simple)
 r2_multi = r2_score(y_test, y_pred_multi)
 
