@@ -52,15 +52,15 @@ X_train, X_test, y_train, y_test = train_test_split(
 X_train_simple = X_train[:, :1] 
 X_test_simple = X_test[:, :1]
 
+
 simple_model = LinearRegression()
 simple_model.fit(X_train_simple, y_train)
 
-
 y_pred_simple = simple_model.predict(X_test_simple)
+
 
 multi_model = LinearRegression()
 multi_model.fit(X_train, y_train)
-
 
 y_pred_multi = multi_model.predict(X_test)
 
