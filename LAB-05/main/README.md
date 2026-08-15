@@ -48,7 +48,7 @@ Dynamically detects class subdirectories within data/. Reads supported image for
 The system will create an `outputs/` folder and save the model file (`svm_model.pkl`), scaler (`scaler.pkl`), train/test data (`.npy`), **and the confusion matrix image (`confusion_matrix.png`).**
 
 - run test_svm.py for Visual Test
-To randomly select and scale images from the test dataset for display and to save the resulting images. *and The prediction result image will be saved at `outputs/prediction_sample.png`*
+ To randomly select and scale images from the test dataset for display and to save the resulting images. *and The prediction result image will be saved at `outputs/prediction_sample.png`*
 
 # You can install all library in this command :
-pip install numpy opencv-python scikit-learn matplotlib joblib
+ pip install numpy opencv-python scikit-learn matplotlib joblib
