@@ -37,6 +37,7 @@ def load_data(data_path, img_size=100, max_per_class=None):
 
             image = preprocess_image(image, img_size)
 
+
             if image is None:
                 skipped += 1
                 continue
