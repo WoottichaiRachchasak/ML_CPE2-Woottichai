@@ -14,7 +14,7 @@ DATA_PATH = "./Men vs Women"
 OUTPUT_DIR = "./outputs"
 IMG_SIZE = 100
 TEST_SIZE = 0.2
-MAX_PER_CLASS = 3000   # None = use all images (very slow)
+MAX_PER_CLASS = 3000  
 
 
 def main():

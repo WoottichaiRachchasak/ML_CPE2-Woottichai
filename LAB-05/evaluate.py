@@ -1,9 +1,5 @@
-
-
-
 import matplotlib
 
-# Set backend before pyplot, so it works without a display
 matplotlib.use("Agg")
 
 import matplotlib.pyplot as plt
@@ -17,10 +13,8 @@ from sklearn.metrics import (
 
 def evaluate_model(y_test, predictions, classes, save_path=None):
 
-    # Pin label order so target_names always matches the columns
     labels = list(range(len(classes)))
 
-    # Calculate accuracy
     accuracy = accuracy_score(y_test, predictions)
 
     print("\n------------ Evaluation ------------------")

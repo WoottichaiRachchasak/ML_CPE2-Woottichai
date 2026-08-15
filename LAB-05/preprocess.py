@@ -8,11 +8,9 @@ def preprocess_image(image, img_size=100):
     if image is None or image.size == 0:
         return None
 
-    # Convert BGR to grayscale
     if image.ndim == 3:
         image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-    # Resize image (INTER_AREA is the right filter for shrinking)
     image = cv2.resize(
         image,
         (img_size, img_size),
@@ -26,7 +24,6 @@ def to_features(images):
     """(n, h, w) uint8 -> (n, h*w) float32 in 0-1."""
 
     features = images.reshape(len(images), -1).astype(np.float32)
-    # Normalize pixel values from 0-255 to 0-1
     features /= 255.0
 
     return features

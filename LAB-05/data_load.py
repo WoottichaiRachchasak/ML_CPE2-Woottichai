@@ -12,7 +12,6 @@ def load_data(data_path, img_size=100, max_per_class=None):
     images = []
     labels = []
 
-    # Detect classes automatically from subdirectories
     classes = sorted([
         folder
         for folder in os.listdir(data_path)
@@ -20,7 +19,6 @@ def load_data(data_path, img_size=100, max_per_class=None):
     ])
     print("Detected classes:", classes)
 
-    # Read images from each class directory
     for label, class_name in enumerate(classes):
         class_path = os.path.join(data_path, class_name)
         filenames = sorted(
@@ -37,11 +35,8 @@ def load_data(data_path, img_size=100, max_per_class=None):
             image_path = os.path.join(class_path, filename)
             image = cv2.imread(image_path)
 
-            # Resize + grayscale here so full-size images are not all
-            # kept in memory at once
             image = preprocess_image(image, img_size)
 
-            # Skip unreadable or damaged images
             if image is None:
                 skipped += 1
                 continue
