@@ -9,13 +9,13 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
-# ชี้ไปที่ไฟล์ WineQT.csv
+
 CSV_PATH = Path(__file__).resolve().parent.parent / "WineQT.csv"
 
-# คอลัมน์เป้าหมายที่จะใช้ทำนาย (ระดับคุณภาพไวน์)
+
 TARGET = "quality"
 
-# คอลัมน์ตัวเลขสารเคมีทั้ง 11 ตัว
+
 NUMERIC_FEATURES = [
     "fixed acidity",
     "volatile acidity",
