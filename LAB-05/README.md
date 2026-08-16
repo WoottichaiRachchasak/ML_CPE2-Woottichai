@@ -4,7 +4,7 @@ This image classification project utilizes a **Support Vector Machine (SVM)** mo
 # Project Structure
 ```text
 main/
-├── Men vs Women/               
+├── data/               
 │   ├── men/
 │   └── women/
 ├── data_load.py         
