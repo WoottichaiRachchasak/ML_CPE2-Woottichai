@@ -26,11 +26,13 @@ LAB-06/
     - Train set: 70%
     - Validation set: 10%
     - Test set: 20%
-### Model Architecture (nn_model.py) 
+### 3.Model Architecture (nn_model.py) 
 - Type: Fully-Connected Neural Network (MLP) 
 - Input Layer: Rescaling(1/255) followed by Flatten() to reshape 2D images into 1D vectors 
 - Hidden Layers:
-    Dense Layer (256 units) + BatchNormalization + Dropout(0.4)  Dense Layer (128 units) + BatchNormalization + Dropout(0.4)  Dense Layer (64 units) + Dropout(0.3) 
+Dense Layer (256 units) + BatchNormalization + Dropout(0.4)  
+Dense Layer (128 units) + BatchNormalization + Dropout(0.4)  
+Dense Layer (64 units) + Dropout(0.3) 
 - Output Layer: Dense Layer (Sigmoid activation for binary classification)  
 - Optimizer: Adam (Learning Rate = 1e-4)  
 - Loss Function: Binary Crossentropy  
