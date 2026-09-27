@@ -15,6 +15,7 @@ def train_svm(X_train, y_train, pca_components=150):
     X_train_scaled = scaler.fit_transform(X_train)
 
     model = SVC(
+        # rbf คือรูปแบบการแปลงข้อมูลที่ช่วยให้โมเดลวาดเส้นแบ่งข้อมูลที่ซับซ้อนได้ 
         kernel="rbf", C=10, gamma="scale", cache_size=1000
     )
 

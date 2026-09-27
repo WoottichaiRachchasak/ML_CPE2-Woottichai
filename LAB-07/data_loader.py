@@ -2,16 +2,25 @@ import os
 import cv2
 import numpy as np
 
-from preprocess import preprocess_image
+from preprocessing import preprocess_image
 
 VALID_EXT = (".jpg", ".jpeg", ".png", ".bmp")
 
 
 def load_data(data_path, img_size=100, max_per_class=None):
 
+    # Fail with a useful message instead of a bare WinError 3
+    if not os.path.isdir(data_path):
+        raise FileNotFoundError(
+            f"Dataset not found: {os.path.abspath(data_path)}\n"
+            "Expected PetImages/Cat/ and PetImages/Dog/ at the project root. "
+            "Download it, or point DATA_PATH in main.py at an existing copy."
+        )
+
     images = []
     labels = []
 
+    # Detect classes automatically from subdirectories
     classes = sorted([
         folder
         for folder in os.listdir(data_path)
@@ -19,6 +28,7 @@ def load_data(data_path, img_size=100, max_per_class=None):
     ])
     print("Detected classes:", classes)
 
+    # Read images from each class directory
     for label, class_name in enumerate(classes):
         class_path = os.path.join(data_path, class_name)
         filenames = sorted(
@@ -33,16 +43,16 @@ def load_data(data_path, img_size=100, max_per_class=None):
                 break
 
             image_path = os.path.join(class_path, filename)
-            #เปิดรูปภาพที่เรียงไว้ใน image_path เเล้วเเปลงเป็น array ตัวเลข เเละเก็บใน image
             image = cv2.imread(image_path)
 
+            # Resize here so full-size images are not all kept in memory
             image = preprocess_image(image, img_size)
 
-
+            # Skip unreadable or damaged images
             if image is None:
                 skipped += 1
                 continue
-            #วนเอาข้อมูลที่ได้ไปใส่ไว้ในเเต่ละอัน        
+
             images.append(image)
             labels.append(label)
             loaded += 1
