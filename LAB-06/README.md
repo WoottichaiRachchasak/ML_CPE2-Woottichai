@@ -30,13 +30,13 @@ LAB-06/
 - Type: Fully-Connected Neural Network (MLP) 
 - Input Layer: Rescaling(1/255) followed by Flatten() to reshape 2D images into 1D vectors 
 - Hidden Layers:
-Dense Layer (256 units) + BatchNormalization + Dropout(0.4)  
-Dense Layer (128 units) + BatchNormalization + Dropout(0.4)  
-Dense Layer (64 units) + Dropout(0.3) 
-- Output Layer: Dense Layer (Sigmoid activation for binary classification)  
-- Optimizer: Adam (Learning Rate = 1e-4)  
-- Loss Function: Binary Crossentropy  
-- Callbacks: EarlyStopping and ReduceLROnPlateau to manage learning decay and prevent overfitting
+    - Dense Layer (256 units) + BatchNormalization + Dropout(0.4)  
+    - Dense Layer (128 units) + BatchNormalization + Dropout(0.4)  
+    - Dense Layer (64 units) + Dropout(0.3) 
+    - Output Layer: Dense Layer (Sigmoid activation for binary classification)  
+    - Optimizer: Adam (Learning Rate = 1e-4)  
+    - Loss Function: Binary Crossentropy  
+    - Callbacks: EarlyStopping and ReduceLROnPlateau to manage learning decay and prevent overfitting
 ## Usage
 - Install library before run code 
 From this command : pip install tensorflow opencv-python numpy scikit-learn matplotlib
